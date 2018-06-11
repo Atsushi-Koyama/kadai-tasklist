@@ -1,0 +1,45 @@
+[1mdiff --git a/app/models/application_record.rb b/app/models/application_record.rb[m
+[1mindex 10a4cba..71a1a03 100644[m
+[1m--- a/app/models/application_record.rb[m
+[1m+++ b/app/models/application_record.rb[m
+[36m@@ -1,3 +1,3 @@[m
+ class ApplicationRecord < ActiveRecord::Base[m
+   self.abstract_class = true[m
+[31m-end[m
+[32m+[m[32mend[m
+\ No newline at end of file[m
+[1mdiff --git a/app/models/task.rb b/app/models/task.rb[m
+[1mindex 55dee22..3c23424 100644[m
+[1m--- a/app/models/task.rb[m
+[1m+++ b/app/models/task.rb[m
+[36m@@ -1,3 +1,2 @@[m
+ class Task < ApplicationRecord[m
+[31m-  self.abstract_class = true[m
+ end[m
+[1mdiff --git a/app/views/layouts/application.html.erb b/app/views/layouts/application.html.erb[m
+[1mindex 8cea4b3..ee111a7 100644[m
+[1m--- a/app/views/layouts/application.html.erb[m
+[1m+++ b/app/views/layouts/application.html.erb[m
+[36m@@ -9,6 +9,9 @@[m
+   </head>[m
+ [m
+   <body>[m
+[31m-    <%= yield %>[m
+[32m+[m[32m    <div class="container">[m
+[32m+[m[32m      <%= render 'layouts/flash_messages' %>[m
+[32m+[m[32m      <%= yield %>[m
+[32m+[m[32m    </div>[m
+   </body>[m
+ </html>[m
+[1mdiff --git a/config/routes.rb b/config/routes.rb[m
+[1mindex 787824f..90c5484 100644[m
+[1m--- a/config/routes.rb[m
+[1m+++ b/config/routes.rb[m
+[36m@@ -1,3 +1,6 @@[m
+ Rails.application.routes.draw do[m
+[31m-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html[m
+[32m+[m[32m  root to:'tasks#index'[m
+[32m+[m[41m  [m
+[32m+[m[41m  [m
+[32m+[m[32m  resources :tasks[m
+ end[m
